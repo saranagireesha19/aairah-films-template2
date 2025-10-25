@@ -1,20 +1,358 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Aairah Films — Creative Film & Video Production</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="description" content="Aairah Films — TV commercials, corporate films, music videos, web series, event coverage and more." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--accent:#ff3b3b;--dark:#0f1724;--muted:#6b7280;--card:#0b1220}
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,Arial;scroll-behavior:smooth;color:#e6eef6;background:#071022}
+    a{color:inherit;text-decoration:none}
+    header{position:fixed;top:0;left:0;right:0;backdrop-filter:blur(6px);background:linear-gradient(180deg,rgba(6,8,12,.6),rgba(6,8,12,.25));z-index:50}
+    .container{max-width:1150px;margin:0 auto;padding:0 20px}
+    nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:700;color:white}
+    .brand .logo{width:44px;height:44px;border-radius:8px;background:linear-gradient(135deg,var(--accent),#ff8a5b);display:flex;align-items:center;justify-content:center;color:#081223;font-weight:800}
+    .navlinks{display:flex;gap:18px;align-items:center}
+    .navlinks a{padding:8px 10px;border-radius:8px;color:#cfe6ff;font-weight:600}
+    .navlinks a.active{background:rgba(255,255,255,0.05);color:white}
+    /* HERO */
+    .hero{min-height:80vh;display:grid;align-items:center}
+    .hero-grid{display:grid;grid-template-columns:1fr 420px;gap:36px;align-items:center}
+    .eyebrow{color:var(--accent);font-weight:700}
+    h1{font-size:clamp(30px,4.5vw,48px);line-height:1.02;margin:12px 0;color:white}
+    p.lead{color:var(--muted);max-width:62ch}
+    .cta{margin-top:18px;display:flex;gap:12px}
+    .btn{padding:10px 16px;border-radius:10px;font-weight:700;cursor:pointer}
+    .btn-primary{background:linear-gradient(90deg,var(--accent),#ff8a5b);color:#071022;border:none}
+    .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:#dbeafe}
+    /* hero right: video / image */
+    .hero-media{position:relative;border-radius:14px;overflow:hidden;box-shadow:0 10px 30px rgba(3,6,15,.6);background:#000}
+    .hero-media img, .hero-media video{display:block;width:100%;height:100%;object-fit:cover}
+    .play-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+    .play-btn{background:rgba(0,0,0,0.5);backdrop-filter:blur(4px);border-radius:999px;padding:18px;border:2px solid rgba(255,255,255,0.08)}
+    .play-btn:after{content:'▶';color:white;font-weight:700}
+    /* Sections */
+    section{padding:80px 0;border-top:1px solid rgba(255,255,255,0.02)}
+    .section-title{display:flex;align-items:center;gap:12px;margin-bottom:28px}
+    .section-title h2{margin:0;color:white}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:18px;border-radius:12px}
+    .expert-card img{width:100%;height:180px;object-fit:cover;border-radius:10px;margin-bottom:12px}
+    .expert-card h3{margin:6px 0 0}
+    .expert-card p{margin:8px 0;color:var(--muted);font-size:14px}
+    /* Works grid */
+    .works-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .thumb{position:relative;border-radius:10px;overflow:hidden;cursor:pointer}
+    .thumb img{width:100%;height:180px;object-fit:cover;display:block}
+    .thumb .meta{position:absolute;left:10px;bottom:10px;background:rgba(0,0,0,0.5);padding:6px 10px;border-radius:8px;color:white;font-weight:700}
+    /* contact */
+    .contact-grid{display:grid;grid-template-columns:1fr 400px;gap:30px}
+    .contact-card{padding:18px;border-radius:10px;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent)}
+    label{display:block;margin-bottom:6px;font-weight:600}
+    input,textarea,select{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:#e6eef6}
+    textarea{min-height:140px}
+    footer{padding:40px 0;color:var(--muted);font-size:14px}
+    /* responsive */
+    @media (max-width:980px){.hero-grid{grid-template-columns:1fr;}.grid-3{grid-template-columns:repeat(2,1fr)}.works-grid{grid-template-columns:repeat(2,1fr)}.contact-grid{grid-template-columns:1fr}} 
+    @media (max-width:640px){.navlinks{display:none}.brand .name{display:none}.grid-3{grid-template-columns:1fr}.works-grid{grid-template-columns:1fr}.hero{padding-top:64px}}
+  </style>
 </head>
 <body>
   <header>
-    <h1>Welcome to Aairah Films</h1>
+    <div class="container">
+      <nav>
+        <div class="brand">
+          <div class="logo">AF</div>
+          <div>
+            <div style="font-size:14px;color:#a6d0ff">Aairah Films</div>
+            <div style="font-size:12px;color:var(--muted);margin-top:2px">Creative Film & Video Production</div>
+          </div>
+        </div>
+        <div class="navlinks" id="navlinks">
+          <a href="#home" class="active">Home</a>
+          <a href="#about">About</a>
+          <a href="#expertise">Expertise</a>
+          <a href="#works">Works</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+    </div>
   </header>
-  <main>
-    <p>This is a sample one-page website setup.</p>
+
+  <main style="padding-top:90px">
+    <!-- HERO -->
+    <section id="home" class="hero container">
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow">We make stories move</div>
+          <h1>Broadcast TV commercials • Music videos • Web series • Live events</h1>
+          <p class="lead">Aairah Films blends cinematic storytelling with sharp brand instincts. From concept to camera to final cut, we produce work that grabs attention and drives results.</p>
+          <div class="cta">
+            <button class="btn btn-primary" onclick="scrollToSection('works')">Watch Our Work</button>
+            <a class="btn btn-ghost" href="#contact">Get a Quote</a>
+          </div>
+          <div style="margin-top:18px;color:var(--muted);font-size:14px">Services: TV Commercials • Corporate Films • PS Ads • Music Videos • Web Series • Photo & Event Shoots • Promotional Campaigns • Weddings</div>
+        </div>
+
+        <div class="hero-media" aria-hidden="false">
+          <!-- Replace the poster image or swap to a local/video file. If you prefer a YouTube hero, replace with iframe. -->
+          <img src="https://images.unsplash.com/photo-1506765515384-028b60a970df?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=3f7a1a1d2b3c9b6f" alt="Film crew shooting a scene">
+          <div class="play-overlay">
+            <div class="play-btn" onclick="openVideoModal('https://www.youtube.com/embed/VIDEO_ID?autoplay=1&rel=0')" title="Play showreel"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="container">
+      <div class="section-title">
+        <h2>About Aairah Films</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 360px;gap:26px;align-items:start">
+        <div>
+          <p style="color:var(--muted);font-size:16px;line-height:1.65">Aairah Films provides end-to-end creative film and video production services. Managed by a team with deep roots in cinema and advertising, we combine cinematic craft with marketing intelligence to deliver films that look beautiful and perform strong. We focus on understanding our client's vision and translating it into visual stories — whether it's a 30-second TVC, a brand film, a music video, or a live event film.</p>
+
+          <h3 style="margin-top:18px;color:white">What we do — short</h3>
+          <ul style="color:var(--muted);line-height:1.8">
+            <li><strong>Concept & Script</strong> — Idea generation, scripting and storyboarding.</li>
+            <li><strong>Production</strong> — Direction, cinematography, sound recording, and production management.</li>
+            <li><strong>Post-production</strong> — Editing, color grading, VFX, sound design and final mastering.</li>
+            <li><strong>Distribution Support</strong> — Formats for broadcast, social, and OTT platforms.</li>
+          </ul>
+
+          <h3 style="margin-top:18px;color:white">Why choose us</h3>
+          <p style="color:var(--muted);">We stay true to the basics: reliability, cinematic craft, and a client-first approach. That means clear communication, on-time delivery, and production that aligns with brand objectives.</p>
+        </div>
+        <div>
+          <div class="contact-card">
+            <strong style="color:white">Quick facts</strong>
+            <p style="color:var(--muted);margin-top:8px">Established production house • Team of directors, DOPs & producers • Experienced in broadcast & digital campaigns • Equipped for location & studio shoots</p>
+            <div style="margin-top:12px;display:flex;gap:10px">
+              <div style="text-align:center">
+                <div style="font-weight:800;color:white;font-size:20px">250+</div>
+                <div style="color:var(--muted);font-size:13px">Projects</div>
+              </div>
+              <div style="text-align:center">
+                <div style="font-weight:800;color:white;font-size:20px">10+</div>
+                <div style="color:var(--muted);font-size:13px">Years</div>
+              </div>
+              <div style="text-align:center">
+                <div style="font-weight:800;color:white;font-size:20px">50+</div>
+                <div style="color:var(--muted);font-size:13px">Clients</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERTISE -->
+    <section id="expertise" class="container">
+      <div class="section-title"><h2>Expertise</h2></div>
+      <div class="grid-3">
+        <!-- Card: TV Commercials -->
+        <div class="card expert-card">
+          <img src="https://images.unsplash.com/photo-1516455207990-7a41ce80f7ee?q=80&w=1200&auto=format&fit=crop&s=2f0a0f" alt="TV commercial set">
+          <h3>TV Commercials</h3>
+          <p>Create high-impact ad films for broadcasters and DTH. End-to-end execution from creative to final master for TV and digital platforms.</p>
+        </div>
+
+        <div class="card expert-card">
+          <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1200&auto=format&fit=crop&s=5e2b6d" alt="Corporate film shoot">
+          <h3>Corporate Films</h3>
+          <p>Brand films, corporate communication, training films and internal launch videos that speak the language of stakeholders.</p>
+        </div>
+
+        <div class="card expert-card">
+          <img src="https://images.unsplash.com/photo-1496318447583-f524534e9ce1?q=80&w=1200&auto=format&fit=crop&s=0d3a7f" alt="Public service ad scenario">
+          <h3>PS Advertisements</h3>
+          <p>Public service ads and awareness campaigns — crafted to move audiences and create measurable impact.</p>
+        </div>
+
+        <div class="card expert-card">
+          <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?q=80&w=1200&auto=format&fit=crop&s=0b5e2a" alt="music video shoot">
+          <h3>Music Videos</h3>
+          <p>Visually driven music films that translate sound into cinematic imagery—concept, production and post done in-house.</p>
+        </div>
+
+        <div class="card expert-card">
+          <img src="https://images.unsplash.com/photo-1532634896-26909d0d3c15?q=80&w=1200&auto=format&fit=crop&s=2a9e2c" alt="web series scene on set">
+          <h3>Web Series</h3>
+          <p>Serial storytelling across streaming platforms—writing, shooting schedules, episodic post-production and delivery support.</p>
+        </div>
+
+        <div class="card expert-card">
+          <img src="https://images.unsplash.com/photo-1520975919737-7a0f0b7fbaa7?q=80&w=1200&auto=format&fit=crop&s=1c8a0d" alt="studio photoshoot">
+          <h3>Photo Shoot & Promotional Campaigns</h3>
+          <p>Campaign-level photoshoots and promotional asset creation for social & print, plus creative direction and retouching.</p>
+        </div>
+
+        <div class="card expert-card">
+          <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop&s=17f2a1" alt="online event streaming">
+          <h3>Online Event Shoot & Event Coverage</h3>
+          <p>Live multi-camera shoots, streaming setups and event highlight films designed to keep audiences engaged.</p>
+        </div>
+
+        <div class="card expert-card">
+          <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?q=80&w=1200&auto=format&fit=crop&s=6b7a9d" alt="wedding cinematography">
+          <h3>Wedding Shoots</h3>
+          <p>Cinematic wedding films that capture the story of the day—pre-wedding, ceremony, and highlight reels.</p>
+        </div>
+
+        <div class="card expert-card">
+          <img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?q=80&w=1200&auto=format&fit=crop&s=3b4a1d" alt="promo design concept">
+          <h3>Promotional Campaign Design</h3>
+          <p>Strategy-led promotional campaigns across social, OTT and events—creative concepts that convert.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORKS -->
+    <section id="works" class="container">
+      <div class="section-title"><h2>Works / Showreel</h2></div>
+      <p style="color:var(--muted);margin-bottom:14px">Click any thumbnail to watch the video in a lightbox. Replace the data-src with your YouTube embed URLs.</p>
+      <div class="works-grid" id="worksGrid">
+        <!-- Example thumbs. Replace data-video with embed URLs (https://www.youtube.com/embed/VIDEO_ID) -->
+        <div class="thumb" tabindex="0" data-video="https://www.youtube.com/embed/VIDEO_ID_1">
+          <img src="https://images.unsplash.com/photo-1497032628192-86f99bcd76bc?q=80&w=1400&auto=format&fit=crop&s=1a2b3c" alt="Work 1">
+          <div class="meta">TVC — Product X</div>
+        </div>
+        <div class="thumb" tabindex="0" data-video="https://www.youtube.com/embed/VIDEO_ID_2">
+          <img src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?q=80&w=1400&auto=format&fit=crop&s=3c4d5e" alt="Work 2">
+          <div class="meta">Music Video — Artist Y</div>
+        </div>
+        <div class="thumb" tabindex="0" data-video="https://www.youtube.com/embed/VIDEO_ID_3">
+          <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?q=80&w=1400&auto=format&fit=crop&s=4f5g6h" alt="Work 3">
+          <div class="meta">Corporate Film — Brand Z</div>
+        </div>
+        <div class="thumb" tabindex="0" data-video="https://www.youtube.com/embed/VIDEO_ID_4">
+          <img src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?q=80&w=1400&auto=format&fit=crop&s=7h8i9j" alt="Work 4">
+          <div class="meta">Web Series — Ep.1</div>
+        </div>
+        <div class="thumb" tabindex="0" data-video="https://www.youtube.com/embed/VIDEO_ID_5">
+          <img src="https://images.unsplash.com/photo-1508921912186-1d1a45ebb3c1?q=80&w=1400&auto=format&fit=crop&s=0k1l2m" alt="Work 5">
+          <div class="meta">Event Coverage — Festival</div>
+        </div>
+        <div class="thumb" tabindex="0" data-video="https://www.youtube.com/embed/VIDEO_ID_6">
+          <img src="https://images.unsplash.com/photo-1489413691422-38f5a6f25b44?q=80&w=1400&auto=format&fit=crop&s=9n0o1p" alt="Work 6">
+          <div class="meta">PSA — Health</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="container">
+      <div class="section-title"><h2>Contact & Booking</h2></div>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <p style="color:var(--muted)">Have a project in mind? Share a few details and our producer will contact you within 48 hours. For urgent queries call: <strong style="color:white">+91 12345 67890</strong></p>
+          <p style="margin-top:10px;color:var(--muted)"><strong style="color:white">Studio / Office</strong><br>123 Film Lane, Hyderabad, India</p>
+          <p style="margin-top:10px;color:var(--muted)"><strong style="color:white">Email</strong><br>hello@aairahfilms.com</p>
+          <div style="margin-top:14px">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3" style="border:0;width:100%;height:180px;border-radius:10px" allowfullscreen="" loading="lazy"></iframe>
+          </div>
+        </div>
+
+        <form class="contact-card" id="contactForm" onsubmit="submitForm(event)">
+          <label for="name">Name</label>
+          <input id="name" name="name" required placeholder="Your name">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" required placeholder="you@domain.com">
+          <label for="service">Service</label>
+          <select id="service" name="service" required>
+            <option value="">Choose a service</option>
+            <option>TV Commercial</option>
+            <option>Corporate Film</option>
+            <option>Music Video</option>
+            <option>Web Series</option>
+            <option>Event Coverage</option>
+            <option>Wedding Shoot</option>
+            <option>Photoshoot</option>
+          </select>
+          <label for="message">Project brief</label>
+          <textarea id="message" name="message" placeholder="Tell us about your project"></textarea>
+          <div style="display:flex;gap:12px;margin-top:12px;align-items:center">
+            <button class="btn btn-primary" type="submit">Send Request</button>
+            <div style="color:var(--muted);font-size:13px">No spam — we'll only contact you about this project.</div>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <footer class="container">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap">
+        <div style="margin-bottom:8px">© <strong>Aairah Films</strong> — All rights reserved.</div>
+        <div style="color:var(--muted)">Follow us: YouTube • Instagram • LinkedIn</div>
+      </div>
+    </footer>
   </main>
-  <footer>
-    <p>© Aairah Films</p>
-  </footer>
+
+  <!-- VIDEO LIGHTBOX MODAL -->
+  <div id="videoModal" style="position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(3,6,15,0.72);z-index:999">
+    <div style="width:90%;max-width:1000px;background:transparent;position:relative">
+      <button onclick="closeVideoModal()" style="position:absolute;right:-40px;top:-40px;background:transparent;border:none;color:white;font-size:28px">✕</button>
+      <div style="padding-top:56.25%;position:relative">
+        <iframe id="modalIframe" src="" style="position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:10px" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Smooth scrolling helper
+    function scrollToSection(id){ document.querySelector('#'+id).scrollIntoView({behavior:'smooth'}); }
+
+    // Nav link active state on scroll
+    const links = document.querySelectorAll('.navlinks a');
+    const sections = [...document.querySelectorAll('main section')];
+    window.addEventListener('scroll', ()=>{
+      const pos = window.scrollY + 120;
+      sections.forEach(sec=>{
+        if(pos >= sec.offsetTop && pos < sec.offsetTop + sec.offsetHeight){
+          links.forEach(l=>l.classList.remove('active'));
+          const id = '#'+sec.id;
+          const a = document.querySelector('.navlinks a[href="'+id+'"]');
+          if(a) a.classList.add('active');
+        }
+      });
+    });
+
+    // Lightbox for works
+    document.querySelectorAll('.thumb').forEach(t=>{
+      t.addEventListener('click', ()=> openVideoModal(t.dataset.video));
+      t.addEventListener('keypress', (e)=>{ if(e.key==='Enter') openVideoModal(t.dataset.video); });
+    });
+
+    function openVideoModal(src){
+      if(!src) return;
+      document.getElementById('modalIframe').src = src;
+      document.getElementById('videoModal').style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+    function closeVideoModal(){
+      document.getElementById('videoModal').style.display = 'none';
+      document.getElementById('modalIframe').src = '';
+      document.body.style.overflow = '';
+    }
+
+    // Hero play-button pre-filled placeholder example
+    function openHeroVideo(){ openVideoModal('https://www.youtube.com/embed/VIDEO_ID_HERO?autoplay=1&rel=0'); }
+
+    // Contact form (no-backend) - show success & clear
+    function submitForm(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      // Simple UI success feedback
+      alert('Thanks, '+name+"! Your request has been received. We'll get back to you soon.");
+      e.target.reset();
+    }
+
+    // Accessibility: close on ESC
+    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeVideoModal(); });
+  </script>
 </body>
 </html>
